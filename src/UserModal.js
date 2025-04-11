@@ -52,7 +52,7 @@ const UserModal = ({ user_id, showModal, handleClose }) => {
     const accessToken = localStorage.getItem("accessToken");
 
     try {
-    const response=  await axios.patch(`http://localhost:3001/users`, formData, {
+    const response=  await axios.patch(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users`, formData, {
         headers: {
           accessToken: accessToken,
         }

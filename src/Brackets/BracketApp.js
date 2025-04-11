@@ -20,7 +20,7 @@ const TournamentBracket = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/brackets', {
+      const response = await axios.post('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets', {
         division_id,
       });
       console.log('Axios response:', response.data);
@@ -30,7 +30,7 @@ const TournamentBracket = () => {
 
     try {
       // Fetch brackets from the backend with the division_id
-      const response = await axios.get('http://localhost:3001/brackets', {
+      const response = await axios.get('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets', {
         params: { division_id },
       });
 

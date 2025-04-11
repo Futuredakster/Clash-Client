@@ -21,7 +21,7 @@ const Tolpbar = () => {
       const fetchAccountInfo = async () => {
         try {
           const [userResponse] = await Promise.all([
-            axios.get('http://localhost:3001/users', {
+            axios.get('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users', {
               headers: { accessToken },
             }),
           ]);

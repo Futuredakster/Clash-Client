@@ -40,7 +40,7 @@ const CustomModal = ({ showModal, handleClose, accountId, tournament_id }) => {
     }
 
     try {
-      await axios.patch(`http://localhost:3001/tournaments`, data, {
+      await axios.patch(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments`, data, {
         headers: {
           accessToken: accessToken,
           'Content-Type': 'multipart/form-data'

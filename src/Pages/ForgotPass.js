@@ -23,7 +23,7 @@ const ForgotPass = () => {
         console.log("Submitting values:", values);
         try {
             const response = await axios.patch(
-                "http://localhost:3001/users/newpassword",
+                "https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users/newpassword",
                 values,
                 {
                     headers: {

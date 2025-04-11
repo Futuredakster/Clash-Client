@@ -41,7 +41,7 @@ useEffect(() => {
     // Handle the case where there is no access token (e.g., redirect to login page)
     setAuthState({...authState, status:false});
   } else{
-  axios.get("http://localhost:3001/users/auth", {
+  axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users/auth", {
     headers: {
       accessToken: accessToken,
     },

@@ -20,7 +20,7 @@ const CompetitorView = ({ setProps }) => {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:3001/tournaments/praticipent', {
+        axios.get('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments/praticipent', {
             params: {
                 tournament_name: search,
             },

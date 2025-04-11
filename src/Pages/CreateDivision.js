@@ -38,7 +38,7 @@ const CreateDivision = () => {
         return;
       }
 
-      const response = await axios.post("http://localhost:3001/divisions", values, {
+      const response = await axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/divisions", values, {
         headers: {
           accessToken: accessToken,
           "Content-Type": "application/json",

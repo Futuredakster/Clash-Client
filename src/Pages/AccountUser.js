@@ -80,7 +80,7 @@ const AccountUser = () =>{
             } 
         }
         console.log(postData);
-        axios.post("http://localhost:3001/accounts/user", postData)
+        axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/accounts/user", postData)
         .then((response) => {
             navigate('/Login');
             console.log("Request successful:", response);

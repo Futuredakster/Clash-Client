@@ -21,7 +21,7 @@ export const RecoverPassword = () => {
   const onSubmit = async (values, { setSubmitting }) => {
     console.log("Submitting values:", values);
     try {
-      const response = await axios.post("http://localhost:3001/users/verifyemail", values);
+      const response = await axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users/verifyemail", values);
       console.log("Request successful:", response.data);
       if (response.data.error) {
         alert(response.data.error);

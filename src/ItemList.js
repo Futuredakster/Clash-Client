@@ -30,7 +30,7 @@ const seeDivision = (tournamentName, tournamentId) =>{
     }
 
     axios.patch(
-      'http://localhost:3001/tournaments/publish',
+      'https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments/publish',
       {
         tournament_id: tournament_id,
       },
@@ -55,7 +55,7 @@ const seeDivision = (tournamentName, tournamentId) =>{
       return;
     }
 
-    axios.delete(`http://localhost:3001/tournaments`, {
+    axios.delete(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments`, {
       headers: {
         accessToken: accessToken,
       },

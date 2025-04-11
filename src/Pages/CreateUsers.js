@@ -57,7 +57,7 @@ function CreateUsers(){
   onClick={() => {
     if (pages === FormTitles.length - 1) {
       const accessToken = localStorage.getItem("accessToken");
-      axios.post("http://localhost:3001/users", info, {
+      axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users", info, {
         headers: {
             accessToken:accessToken,
         }

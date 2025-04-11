@@ -45,7 +45,7 @@ const PasswordModal = ({ user_id, showModal, handleClose }) => {
     setIsSubmitting(true);
     const accessToken = localStorage.getItem("accessToken");
   
-    axios.patch(`http://localhost:3001/users/pass`, formData, {
+    axios.patch(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users/pass`, formData, {
       headers: {
         accessToken: accessToken,
       }

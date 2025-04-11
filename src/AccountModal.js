@@ -28,7 +28,7 @@ const AccountModal = ({account_id, showModal, handleClose }) => {
     const accessToken = localStorage.getItem("accessToken");
 
     try {
-      await axios.patch(`http://localhost:3001/accounts`, formData, {
+      await axios.patch(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/accounts`, formData, {
         headers: {
           accessToken: accessToken,
         }

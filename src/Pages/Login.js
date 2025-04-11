@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
   const login = () => {
     const data = { username: username, password: password };
-    axios.post("http://localhost:3001/users/Login", data).then((response) => {
+    axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/users/Login", data).then((response) => {
       if(response.data.error){
         alert(response.data.error)
       }

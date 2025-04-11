@@ -70,7 +70,7 @@ const SeeParticepents = () => {
       console.error('Access token not found. API request not made.');
       return;
     }
-    axios.get("http://localhost:3001/participants/user", {
+    axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/participants/user", {
       headers: {
         accessToken: accessToken,
       },

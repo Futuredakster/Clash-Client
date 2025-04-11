@@ -40,7 +40,7 @@ const SeeDivisions = () => {
       return;
     }
 
-    axios.delete(`http://localhost:3001/divisions`, {
+    axios.delete(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/divisions`, {
       headers: {
         accessToken: accessToken,
       },
@@ -65,7 +65,7 @@ const SeeDivisions = () => {
       return;
     }
 
-    axios.get("http://localhost:3001/divisions/", {
+    axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/divisions/", {
       headers: {
         accessToken: accessToken,
       },

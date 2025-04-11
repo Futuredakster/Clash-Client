@@ -32,7 +32,7 @@ export const Divisions = ({ props, setProps, setDivision }) => {
 
   const fetchTournamentDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/tournaments/default", {
+      const response = await axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments/default", {
         params: { tournament_id }
       });
       if (response.data.error) {
@@ -49,7 +49,7 @@ export const Divisions = ({ props, setProps, setDivision }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/divisions/praticepent", {
+        const response = await axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/divisions/praticepent", {
           params: { tournament_id }
         });
         if (response.data.error) {

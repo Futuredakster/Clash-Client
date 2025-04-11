@@ -40,7 +40,7 @@ const DivisionModal = ({ division_id, showModal, handleClose }) => {
     const accessToken = localStorage.getItem("accessToken");
 
     try {
-      await axios.patch(`http://localhost:3001/divisions`, formData, {
+      await axios.patch(`https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/divisions`, formData, {
         headers: {
           accessToken: accessToken,
           'Content-Type': 'application/json'

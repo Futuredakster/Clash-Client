@@ -22,7 +22,7 @@ function MyTournaments() {
     }
   
     // Fetch data from the backend API
-    axios.get('http://localhost:3001/tournaments/byaccount', {
+    axios.get('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments/byaccount', {
       headers: {
         accessToken: accessToken,
       }, 

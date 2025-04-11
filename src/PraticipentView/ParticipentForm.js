@@ -26,7 +26,7 @@ export const ParticipentForm = ({ division }) => {
 
   const fetchDivisionData = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/divisions/default", {
+      const response = await axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/divisions/default", {
         params: { division_id: division_id },
       });
       if (response.data.error) {
@@ -63,7 +63,7 @@ export const ParticipentForm = ({ division }) => {
   const onSubmit = async (values, { setSubmitting }) => {
     console.log("Submitting values:", values);
     try {
-      const response = await axios.post("http://localhost:3001/participants", values);
+      const response = await axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/participants", values);
       console.log("Request successful:", response.data);
       if (response.data.error) {
         const queryString = new URLSearchParams({ tournament_id: data?.tournament_id }).toString();

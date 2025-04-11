@@ -65,7 +65,7 @@ const DisplayParticipants = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/participants", {
+    axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/participants", {
       params: { division_id: division_id },
     })
     .then(response => {
