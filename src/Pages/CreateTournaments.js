@@ -43,7 +43,6 @@ const CreateTournaments = () => {
       const response = await axios.post("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/tournaments", formData, {
         headers: {
           accessToken: accessToken,
-          "Content-Type": "multipart/form-data",
         },
       });
 
