@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // <== added useEffect
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Brackets.css';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -19,27 +19,35 @@ const TournamentBracket = () => {
     }
 
     try {
-      await axios.post('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets', { division_id });
+      // Call backend to create brackets
+      const response = await axios.post('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets', { division_id });
+      console.log('Axios response:', response.data);
     } catch (error) {
       console.error('Error making Axios call:', error);
     }
 
+    console.log("Trying TO FETCH NOW!");
     try {
+      // Fetch the created brackets from the backend
       const response = await axios.get("https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets", {
         params: { division_id },
       });
 
       let fetchedBrackets = response.data;
+      console.log('Fetched brackets:', fetchedBrackets);
+
+      // Sort the brackets by bracket_id
       fetchedBrackets = fetchedBrackets.sort((a, b) => a.bracket_id - b.bracket_id);
 
-      const newBrackets = fetchedBrackets.map((bracket) => ({
+      // Structure the brackets into rounds and include the next round
+      const newBrackets = fetchedBrackets.map((bracket, idx) => ({
         bracket_id: bracket.bracket_id,
         user1: bracket.user1 || 'Bye',
         user2: bracket.user2 || 'Bye',
         score1: bracket.points_user1 || 0,
         score2: bracket.points_user2 || 0,
         winner: bracket.winner,
-        round: bracket.round,
+        round: bracket.round, // Use the round from backend directly
       }));
 
       setBracketData(newBrackets);
@@ -48,10 +56,6 @@ const TournamentBracket = () => {
       console.error('Error fetching brackets from backend:', error);
     }
   };
-
-  useEffect(() => {
-    generateBracket(); // Auto-fetch on load
-  }, [division_id]); // Only re-run if division_id changes
 
   const clearBrackets = () => {
     setBracketData([]);
@@ -66,7 +70,8 @@ const TournamentBracket = () => {
   return (
     <div className="container mt-4">
       <div className="d-flex justify-content-center mb-3">
-       <h1>Brackets</h1>
+        <button className="btn btn-primary mx-2" onClick={generateBracket}>Show Brackets</button>
+        <button className="btn btn-danger mx-2" onClick={clearBrackets}>Clear Brackets</button>
       </div>
 
       {Object.keys(rounds).length > 0 ? (
