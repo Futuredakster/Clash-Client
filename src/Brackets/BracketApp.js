@@ -57,10 +57,34 @@ const TournamentBracket = () => {
     }
   };
 
-  const clearBrackets = () => {
-    setBracketData([]);
-    setBracketCount(0);
+  const clearBrackets = async () => {
+    if (!division_id) {
+      console.error('No division_id provided.');
+      return;
+    }
+  
+    try {
+      await axios.delete('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets', {
+        data: { division_id },
+      });
+      console.log('Brackets cleared successfully');
+      setBracketData([]);
+      setBracketCount(0);
+    } catch (error) {
+      console.error('Error clearing brackets:', error);
+    }
   };
+
+  const deleteBracket = async (bracket_id) => {
+    try {
+      await axios.delete('https://aqueous-caverns-75509-5acc57c13eba.herokuapp.com/brackets/byOne', {
+        data: {bracket_id},
+      });
+      setBracketData((prevData) => prevData.filter(b => b.bracket_id !== bracket_id));
+    } catch (error){
+      console.error('error deleting bracket',error);
+    }
+  }
 
   const rounds = bracketData.reduce((acc, bracket) => {
     (acc[bracket.round] = acc[bracket.round] || []).push(bracket);
@@ -95,6 +119,12 @@ const TournamentBracket = () => {
                         onClick={() => navigate(`/PointTracker?bracket_id=${bracket.bracket_id}`)}
                       >
                         Select 🎯
+                      </button>
+                      <button
+                        className="btn btn-success mt-2"
+                        onClick={() => deleteBracket(bracket.bracket_id)}
+                      >
+                        delete 🎯
                       </button>
                     </div>
                   </div>
