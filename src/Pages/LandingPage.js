@@ -3,72 +3,92 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import imageone from '../Images/imageone.jpg';
 import karate from '../Images/karate.jpg';
-import Carousel from 'react-bootstrap/Carousel';
 import kick from '../Images/kick.jpg';
+import Carousel from 'react-bootstrap/Carousel';
 import './Landing.css';
 
 function LandingPage() {
   const navigate = useNavigate();
+
+  // Reusable button group to reduce duplication
+  const renderButtons = () => (
+    <>
+      <Button
+        type="button"
+        variant="primary"
+        size="lg"
+        active
+        onClick={() => navigate('/AccountUser')}
+        style={{ fontSize: '14px', margin: '5px' }}
+      >
+        BEGIN CREATING TOURNAMENTS!
+      </Button>
+      <Button
+        type="button"
+        variant="primary"
+        size="lg"
+        active
+        onClick={() => navigate('/CompetitorView')}
+        style={{ fontSize: '14px', margin: '5px' }}
+      >
+        SIGN UP FOR A TOURNAMENT!
+      </Button>
+      <Button
+        type="button"
+        variant="primary"
+        size="lg"
+        active
+        onClick={() => navigate('/ParticipetnVer')}
+        style={{ fontSize: '14px', margin: '5px' }}
+      >
+        View Your Tornaments!
+      </Button>
+    </>
+  );
 
   return (
     <Carousel>
       <Carousel.Item interval={1000}>
         <img
           className="d-block w-100"
-          src={imageone}  // Use the imported image
+          src={imageone}
           alt="First slide"
           style={{ objectFit: 'cover', height: '93vh' }}
         />
-        <Carousel.Caption  style={{ top: '50%', transform: 'translateY(-50%)' }}>
+        <Carousel.Caption style={{ top: '50%', transform: 'translateY(-50%)' }}>
           <h3>Unleash the Thrill with Clash: Your Gateway to Effortless Tournament Management</h3>
-          <p>Welcome to Clash, your ultimate platform for seamlessly organizing and managing tournaments tailored to your preferred sport! Whether you're an avid sports enthusiast, a passionate gamer, or a company looking to foster team spirit, Clash is here to revolutionize the way you experience competitions.</p>
-          <Button type="button" variant="primary" size="lg" active onClick={() => navigate('/AccountUser')} style={{fontSize: '14px'}}>
-  BEGIN CREATING TOURNAMENTS!
-</Button>
-<Button type="button" variant="primary" size="lg" active onClick={() => navigate('/CompetitorView')} style={{fontSize: '14px'}}>
-  SIGN UP FOR A TOURNAMENT!
-</Button>
-
+          <p>
+            Welcome to Clash, your ultimate platform for seamlessly organizing and managing tournaments tailored to your preferred sport! Whether you're an avid sports enthusiast, a passionate gamer, or a company looking to foster team spirit, Clash is here to revolutionize the way you experience competitions.
+          </p>
+          {renderButtons()}
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item interval={500}>
-        {/* Replace ExampleCarouselImage with your own content */}
         <img
           className="d-block w-100"
-          src={karate}  // Replace with the path to your second image
+          src={karate}
           alt="Second slide"
-          style={{ objectFit: 'cover', height: '93vh' }} 
+          style={{ objectFit: 'cover', height: '93vh' }}
         />
         <Carousel.Caption style={{ top: '50%', transform: 'translateY(-50%)' }}>
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <Button type="button" variant="primary" size="lg" active onClick={() => navigate('/AccountUser')} style={{fontSize: '14px'}}>
-  BEGIN CREATING TOURNAMENTS!
-</Button>
-<Button type="button" variant="primary" size="lg" active onClick={() => navigate('/CompetitorView')} style={{fontSize: '14px'}}>
-  SIGN UP FOR A TOURNAMENT!
-</Button>
-
+          {renderButtons()}
         </Carousel.Caption>
       </Carousel.Item>
+
       <Carousel.Item>
-        {/* Replace ExampleCarouselImage with your own content */}
         <img
           className="d-block w-100"
-          src={kick}  // Replace with the path to your third image
+          src={kick}
           alt="Third slide"
-          style={{ objectFit: 'cover', height: '93vh' }} 
+          style={{ objectFit: 'cover', height: '93vh' }}
         />
-        <Carousel.Caption style={{ top: '50%', transform: 'translateY(-50%)' }} >
+        <Carousel.Caption style={{ top: '50%', transform: 'translateY(-50%)' }}>
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          <Button type="button" variant="primary" size="lg" active onClick={() => navigate('/AccountUser')} style={{fontSize: '14px'}}>
-  BEGIN CREATING TOURNAMENTS!
-</Button>
-<Button type="button" variant="primary" size="lg" active onClick={() => navigate('/CompetitorView')} style={{fontSize: '14px'}}>
-  SIGN UP FOR A TOURNAMENT!
-</Button>
-
+          {renderButtons()}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

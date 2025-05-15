@@ -20,7 +20,13 @@ import {AuthContext} from './helpers/AuthContext';
 import { RecoverPassword } from './RecoverPassword';
 import BracketApp from './Brackets/BracketApp';
 import PointTracker from './Brackets/PointTracker';
+import ParticipentVer from './Pages/ParticipentVer';
+import TournamentView from './PraticipentView/TournamentView';
+import DivisionsView from './PraticipentView/DivisionsView';
+import ParticipentsView from './PraticipentView/ParticipentsView';
+import ParticipentBracket from './PraticipentView/ParticipentBracket';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import {BrowserRouter as Router,Route,Routes,Navigate} from 'react-router-dom';
@@ -31,9 +37,22 @@ function App() {
 const [authState, setAuthState] = useState({username:"", id:0, status:false,accoint_id:0});
 const [props, setProps] = useState([]);
 const [division,setDivision] = useState([]);
+
 console.log(props);
 
-
+axios.interceptors.response.use(
+  response => response,
+  error => {
+    if (
+      error.response &&
+      (error.response.status === 401 || error.response.status === 403)
+    ) {
+      localStorage.removeItem('participantAccessToken');
+      window.location.href = '/PraticipentVer'; // or use navigate() if you want SPA behavior
+    }
+    return Promise.reject(error);
+  }
+);
 
 
 useEffect(() => {
@@ -96,7 +115,11 @@ useEffect(() => {
           <Route path ='ForgotPass' exact element = {<ForgotPass/>} />
           <Route path ='BracketApp' exact element = {<BracketApp/>} />
           <Route path ='PointTracker' exact element= {<PointTracker/>} />
-          
+          <Route path ='ParticipetnVer' exact element = {<ParticipentVer/>} />
+          <Route path ='TournamentView' exact element = {<TournamentView/>} />
+          <Route path ='DivisionsView' exact element = {<DivisionsView/>} />
+          <Route path ='ParticipentsView' exact element = {<ParticipentsView/>} />
+          <Route path ='ParticipentBracket' exact element = {<ParticipentBracket/>} />
         </Routes>
       </div>
 
