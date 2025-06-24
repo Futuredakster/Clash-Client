@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const ParticipentBracket = () => {
   const [bracketData, setBracketData] = useState([]);
+    const navigate = useNavigate();
 
   const generateBracket = async () => {
     const token = localStorage.getItem('participantAccessToken');
@@ -68,6 +70,12 @@ const ParticipentBracket = () => {
                       <div className={`py-2 ${bracket.winner === 'user2' ? 'bg-success text-white' : ''}`}>
                         {bracket.user2} <span className="badge bg-light text-dark ms-1">{bracket.score2}</span>
                       </div>
+                      <button
+                        className="btn btn-success mt-2"
+                        onClick={() => navigate(`/viewer?bracket_id=${bracket.bracket_id}`)}
+                      >
+                        viewer 🎯
+                      </button>
                     </div>
                   </div>
                 </div>

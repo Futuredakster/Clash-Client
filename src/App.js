@@ -25,6 +25,9 @@ import TournamentView from './ParticipantView/TournamentView';
 import DivisionsView from './ParticipantView/DivisionsView';
 import ParticipentsView from './ParticipantView/ParticipentsView';
 import ParticipentBracket from './ParticipantView/ParticipentBracket';
+import WatchPage from './Streaming/WatchPage';
+import CreateStream from './Streaming/CreateStream';
+import GetViewerToken from './Streaming/GetViewerToken';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -120,6 +123,9 @@ useEffect(() => {
           <Route path ='DivisionsView' exact element = {<DivisionsView/>} />
           <Route path ='ParticipentsView' exact element = {<ParticipentsView/>} />
           <Route path ='ParticipentBracket' exact element = {<ParticipentBracket/>} />
+          <Route path="/watch" element={<WatchPage />} />
+          <Route path="/stream" element={<CreateStream />} />
+          <Route path ="/viewer" element={<GetViewerToken/>} />
         </Routes>
       </div>
 

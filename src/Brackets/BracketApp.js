@@ -126,6 +126,12 @@ const TournamentBracket = () => {
                       >
                         delete 🎯
                       </button>
+                      <button 
+                      className='btn btn-success mt-2'
+                      onClick={() => navigate(`/stream?bracket_id=${bracket.bracket_id}`)}
+                      >
+                         Start Streaming
+                      </button>
                     </div>
                   </div>
                 </div>
